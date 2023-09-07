@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# cd
+alias ..="cd .."
+alias ...="../.."
+alias ....="../../.."
+
+# general
+alias l="clear -x"
+alias x="exit"
+alias q="exit"
+alias bat="bat --no-pager --style plain"
+alias src="source"
+alias mkdir="mkdir -p -v"
+
+# yt-dlp
+alias yt="yt-dlp -f 22"
+
+# dir
+alias cdc="cd /mnt/Iyank/Code"
+alias cdk="cd /mnt/Iyank/Kuliah"
+
+# exa
+alias ls="exa --icons --sort type"
+alias la="exa --icons --sort type --all"
+alias ll="exa --icons --sort type --long"
+alias al="exa --icons --sort type --long --all"
+alias lt="exa --icons --tree --sort type"
+
+# trash-cli
+alias rm="trash-put"
+
+# code stuff
+alias code="code --new-window"
+alias chrome="google-chrome-stable"
+
+# apt
+alias install="doas apt install"
+alias remove="doas apt remove"
+alias autoremove="doas apt autoremove"
+alias search="doas apt search"
+alias update="doas apt update"
+alias upgrade="doas apt upgrade"
+alias query="doas apt list --installed"
+alias purge="doas apt remove --purge"
+alias only-upgrade="doas apt install --only-upgrade"
+
+# git
+alias gc="git clone"
+alias ga="git add"
+alias gt="git status"
+alias gm="git commit -m"
+alias gp="git push"
+alias gl="git pull"
+alias gd="git diff"
