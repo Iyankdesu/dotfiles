@@ -67,8 +67,6 @@ cursor:
 
 shell:
   program: /bin/bash
-  args:
-    - --login
 
 key_bindings:
   - { key: N, mods: Control|Shift, action: SpawnNewInstance }
