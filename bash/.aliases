@@ -12,6 +12,8 @@ alias q="exit"
 alias bat="bat --no-pager --style plain"
 alias src="source"
 alias mkdir="mkdir -p -v"
+alias cp="cp -v"
+alias mv="mv -v"
 
 # yt-dlp
 alias yt="yt-dlp -f 22"
@@ -53,3 +55,4 @@ alias gm="git commit -m"
 alias gp="git push"
 alias gl="git pull"
 alias gd="git diff"
+alias gk="git checkout"
