@@ -78,6 +78,10 @@ function duh(){
   du -h -x -s -- * | sort -r -h
 }
 
+function print_exe(){
+  find $(echo $PATH | tr ':' ' ') -type f -perm /u+x
+}
+
 # color output
 bind "set colored-stats on"
 bind "set colored-completion-prefix on"
