@@ -1,0 +1,15 @@
+[battery]
+disabled = true
+
+[character]
+format = "$symbol "
+success_symbol = "[❯](bold blue)"
+error_symbol = "[❯](bold red)"
+
+[cmd_duration]
+disabled = true
+
+[directory]
+truncation_length = 1
+style = "blue bold"
+home_symbol = " "
