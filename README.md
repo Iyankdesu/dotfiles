@@ -1,5 +1,3 @@
-# Dotfiles
-
 Dotfiles managed using GNU Stow
 
 ### Setup
