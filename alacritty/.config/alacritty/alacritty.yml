@@ -7,7 +7,7 @@ window:
     y: 10
   dynamic_padding: true
   startup_mode: Windowed
-  decorations: full
+  decorations: none
   title: Terminal
 
 scrolling:
