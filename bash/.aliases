@@ -15,6 +15,8 @@ alias mkdir="mkdir -p -v"
 alias cp="cp -v"
 alias mv="mv -v"
 
+alias vim="nvim"
+
 # yt-dlp
 alias yt="yt-dlp -f 22"
 
@@ -25,8 +27,8 @@ alias cdk="cd /mnt/Iyank/Kuliah"
 # exa
 alias ls="exa --icons --sort type"
 alias la="exa --icons --sort type --all"
+alias lc="echo Total files: $(exa | wc -l)"
 alias ll="exa --icons --sort type --long"
-alias al="exa --icons --sort type --long --all"
 alias lt="exa --icons --tree --sort type"
 
 # trash-cli
@@ -36,16 +38,19 @@ alias rm="trash-put"
 alias code="code --new-window"
 alias chrome="google-chrome-stable"
 
+# sudo
+alias sudo="doas"
+
 # apt
-alias install="doas apt install"
-alias remove="doas apt remove"
-alias autoremove="doas apt autoremove"
-alias search="doas apt search"
-alias update="doas apt update"
-alias upgrade="doas apt upgrade"
-alias query="doas apt list --installed"
-alias purge="doas apt remove --purge"
-alias only-upgrade="doas apt install --only-upgrade"
+alias install="sudo apt install"
+alias remove="sudo apt remove"
+alias autoremove="sudo apt autoremove"
+alias search="sudo apt search"
+alias update="sudo apt update"
+alias upgrade="sudo apt upgrade"
+alias query="sudo apt list --installed"
+alias purge="sudo apt remove --purge"
+alias only-upgrade="sudo apt install --only-upgrade"
 
 # git
 alias gc="git clone"
@@ -53,6 +58,21 @@ alias ga="git add"
 alias gt="git status"
 alias gm="git commit -m"
 alias gp="git push"
-alias gl="git pull"
+alias gu="git pull"
 alias gd="git diff"
 alias gk="git checkout"
+alias gl="git log --graph --decorate --oneline"
+
+# network
+alias ping="ping -c 4"
+
+# programming lang
+alias rb="ruby"
+
+# python
+alias py="python3"
+alias workon="source .venv/bin/activate"
+alias workoff="deactivate"
+
+# translate
+alias tl="trans -brief -target"
