@@ -62,8 +62,15 @@ export TERM=xterm-256color
 # preferred pager for man (manual pager utils)
 export MANPAGER="bat --style plain"
 
-# add new path
-export PATH="$HOME/Scripts:$PATH"
+# set scripts path if exist
+if [ -d "$HOME/Scripts/" ] ; then
+  PATH="$HOME/Scripts:$PATH"
+fi
+
+# set composer path if exist
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+  PATH="$HOME/.config/composer/vendor/bin:$PATH"
+fi
 
 # set path if directory exitst
 if [ -d "$HOME/.local/bin" ] ; then
@@ -89,6 +96,7 @@ bind "set colored-completion-prefix on"
 # bash completion
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
+bind "set menu-complete-display-prefix on"
 bind "TAB:menu-complete"
 
 # bash keybinding
