@@ -17,6 +17,12 @@ case $- in
       *) return;;
 esac
 
+# run todo command (devtodo package) if installed
+if command -v todo &> /dev/null; then
+  echo "Todo:"
+  todo
+fi
+
 # enable vi style editing
 set -o vi
 
