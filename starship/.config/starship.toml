@@ -3,13 +3,19 @@ disabled = true
 
 [character]
 format = "$symbol "
-success_symbol = "[❯](bold blue)"
-error_symbol = "[❯](bold red)"
+success_symbol = "[❯](bold #50fa7b)"
+error_symbol = "[❯](bold #ff5555)"
 
 [cmd_duration]
 disabled = true
 
 [directory]
 truncation_length = 1
-style = "blue bold"
 home_symbol = " "
+style = "bold #50fa7b"
+
+[git_branch]
+style = "bold #ff79c6"
+
+[git_status]
+style = "bold #ff5555"
