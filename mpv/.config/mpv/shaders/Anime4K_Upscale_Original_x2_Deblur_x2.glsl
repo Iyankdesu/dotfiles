@@ -23,7 +23,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-//!DESC Anime4K-v3.1-Deblur-Original-Kernel(X)
+//!DESC Anime4K-v3.1-Upscale(x2)+Deblur-Original-Kernel(X)
 //!HOOK NATIVE
 //!BIND HOOKED
 //!SAVE LUMAD
@@ -59,7 +59,7 @@ vec4 hook() {
 }
 
 
-//!DESC Anime4K-v3.1-Deblur-Original-Kernel(Y)
+//!DESC Anime4K-v3.1-Upscale(x2)+Deblur-Original-Kernel(Y)
 //!HOOK NATIVE
 //!BIND HOOKED
 //!BIND LUMAD
@@ -135,7 +135,7 @@ vec4 hook() {
 	return vec4(sobel_norm, dval, 0, 0);
 }
 
-//!DESC Anime4K-v3.1-Deblur-Original-Kernel(X)
+//!DESC Anime4K-v3.1-Upscale(x2)+Deblur-Original-Kernel(X)
 //!HOOK NATIVE
 //!BIND HOOKED
 //!BIND LUMAD
@@ -176,7 +176,7 @@ vec4 hook() {
 }
 
 
-//!DESC Anime4K-v3.1-Deblur-Original-Kernel(Y)
+//!DESC Anime4K-v3.1-Upscale(x2)+Deblur-Original-Kernel(Y)
 //!HOOK NATIVE
 //!BIND HOOKED
 //!BIND LUMAD
@@ -227,14 +227,13 @@ vec4 hook() {
 }
 
 
-//!DESC Anime4K-v3.1-Deblur-Original
+//!DESC Anime4K-v3.1-Upscale(x2)+Deblur-Original
 //!HOOK NATIVE
 //!BIND HOOKED
 //!BIND LUMAD
 //!BIND LUMAMM
 //!WIDTH NATIVE.w 2 *
 //!HEIGHT NATIVE.h 2 *
-//!SAVE RESAMPLED
 
 
 vec4 hook() {
@@ -262,13 +261,4 @@ vec4 hook() {
 	
 	return avg * dval + HOOKED_tex(HOOKED_pos) * (1 - dval);
 	
-}
-
-//!DESC Anime4K-v3.1-Deblur-Original-Resample
-//!HOOK NATIVE
-//!BIND HOOKED
-//!BIND RESAMPLED
-
-vec4 hook() {
-	return RESAMPLED_tex(HOOKED_pos);
 }

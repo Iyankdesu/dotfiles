@@ -23,8 +23,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-//!DESC Anime4K-v3.1-Upscale(x2)-DoG-Kernel(X)
-//!WHEN OUTPUT.w NATIVE.w / 1.200 > OUTPUT.h NATIVE.h / 1.200 > *
+//!DESC Anime4K-v3.1-RA-DoG-Downsample
+//!HOOK NATIVE
+//!BIND HOOKED
+//!SAVE BACKUP
+
+vec4 hook() {
+	return HOOKED_tex(HOOKED_pos);
+}
+
+//!DESC Anime4K-v3.1-RA-DoG-Downsample
+//!HOOK NATIVE
+//!BIND HOOKED
+//!WIDTH NATIVE.w 2 /
+//!HEIGHT NATIVE.h 2 /
+
+vec4 hook() {
+	return HOOKED_tex(HOOKED_pos);
+}
+
+//!DESC Anime4K-v3.1-RA-DoG-Kernel(X)
 //!HOOK NATIVE
 //!BIND HOOKED
 //!SAVE GAUSS_X2
@@ -61,8 +79,7 @@ vec4 hook() {
 }
 
 
-//!DESC Anime4K-v3.1-Upscale(x2)-DoG-Kernel(Y)
-//!WHEN OUTPUT.w NATIVE.w / 1.200 > OUTPUT.h NATIVE.h / 1.200 > *
+//!DESC Anime4K-v3.1-RA-DoG-Kernel(Y)
 //!HOOK NATIVE
 //!BIND HOOKED
 //!BIND GAUSS_X2
@@ -103,13 +120,14 @@ vec4 hook() {
     return vec4(lumGaussian7(HOOKED_pos, vec2(0, HOOKED_pt.y)), minmax3(HOOKED_pos, vec2(0, HOOKED_pt.y)), 0);
 }
 
-//!DESC Anime4K-v3.1-Upscale(x2)-DoG
-//!WHEN OUTPUT.w NATIVE.w / 1.200 > OUTPUT.h NATIVE.h / 1.200 > *
+//!DESC Anime4K-v3.1-RA-DoG
 //!HOOK NATIVE
 //!BIND HOOKED
 //!BIND GAUSS_X2
-//!WIDTH NATIVE.w 2 *
-//!HEIGHT NATIVE.h 2 *
+//!WIDTH BACKUP.w
+//!HEIGHT BACKUP.h
+//!COMPONENTS 3
+//!SAVE RESID
 
 #define STRENGTH 0.8 //De-blur proportional strength, higher is sharper.
 
@@ -117,8 +135,26 @@ vec4 hook() {
 
 vec4 hook() {
 	float c = (L_tex(HOOKED_pos).x - GAUSS_X2_tex(HOOKED_pos).x) * STRENGTH;
-	return vec4(clamp(c + L_tex(HOOKED_pos).x, GAUSS_X2_tex(HOOKED_pos).y, GAUSS_X2_tex(HOOKED_pos).z), HOOKED_tex(HOOKED_pos).yz, 0);
+	return vec4(clamp(c + L_tex(HOOKED_pos).x, GAUSS_X2_tex(HOOKED_pos).y, GAUSS_X2_tex(HOOKED_pos).z) - L_tex(HOOKED_pos).x);
 }
 
+
+//!DESC Anime4K-v3.1-RA-DoG-Resample
+//!HOOK NATIVE
+//!BIND HOOKED
+//!BIND BACKUP
+//!BIND RESID
+//!WIDTH BACKUP.w
+//!HEIGHT BACKUP.h
+
+#define STRENGTH 1 //Strength of artifact reduction, high values might blur some edges.
+
+vec4 hook() {
+	float alpha = clamp(abs(RESID_tex(HOOKED_pos).x) * 20 * STRENGTH, 0, 1);
+	float u = HOOKED_tex(HOOKED_pos).x + RESID_tex(HOOKED_pos).x;
+	float o = BACKUP_tex(HOOKED_pos).x;
+	
+	return vec4(u * alpha + o * (1 - alpha), BACKUP_tex(HOOKED_pos).yz, 0);
+}
 
 
