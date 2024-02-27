@@ -86,6 +86,9 @@ fi
 # initialize starship
 eval "$(starship init bash)"
 
+# initialize zoxide
+eval "$(zoxide init bash)"
+
 # function show file size in a directory
 function duh(){
   du -h -x -s -- * | sort -r -h
