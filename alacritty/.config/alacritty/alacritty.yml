@@ -6,7 +6,7 @@ window:
     lines: 26
   # window padding
   padding:
-    x: 3
+    x: 5
     y: 10
   dynamic_padding: true
   # window mode (value Fullscreen, Windowed)
