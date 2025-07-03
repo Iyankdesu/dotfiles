@@ -52,6 +52,11 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+# external functions
+if [ -f ~/.functions ]; then
+    . ~/.functions
+fi
+
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -69,8 +74,8 @@ export TERM=xterm-256color
 export MANPAGER="bat --style plain"
 
 # set scripts path if exist
-if [ -d "$HOME/Scripts/" ] ; then
-  PATH="$HOME/Scripts:$PATH"
+if [ -d "$HOME/scrpts/" ] ; then
+  PATH="$HOME/scrpts:$PATH"
 fi
 
 # set composer path if exist
@@ -85,18 +90,6 @@ fi
 
 # initialize starship
 eval "$(starship init bash)"
-
-# initialize zoxide
-eval "$(zoxide init bash)"
-
-# function show file size in a directory
-function duh(){
-  du -h -x -s -- * | sort -r -h
-}
-
-function print_exe(){
-  find $(echo $PATH | tr ':' ' ') -type f -perm /u+x
-}
 
 # color output
 bind "set colored-stats on"

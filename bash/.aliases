@@ -1,5 +1,8 @@
 #!/bin/sh
 
+SUPER="doas"
+PACKAGE_MANAGER="apt"
+
 # cd
 alias ..="cd .."
 alias ...="../.."
@@ -14,20 +17,12 @@ alias src="source"
 alias mkdir="mkdir -p -v"
 alias cp="cp -v"
 alias mv="mv -v"
-
-alias vim="nvim"
-
-# yt-dlp
-alias yt="yt-dlp -f 22"
-
-# dir
-alias cdc="cd /mnt/Iyank/Code"
-alias cdk="cd /mnt/Iyank/Kuliah"
+alias duh="du -h -x -s -- * | sort -r -h"
 
 # exa
 alias ls="exa --icons --sort type"
 alias la="exa --icons --sort type --all"
-alias lc="echo Total files: $(exa | wc -l)"
+alias lc="echo Total: $(exa | wc -l)"
 alias ll="exa --icons --sort type --long"
 alias lt="exa --icons --tree --sort type"
 
@@ -38,19 +33,17 @@ alias rm="trash-put"
 alias code="code --new-window"
 alias chrome="google-chrome-stable"
 
-# sudo
-alias sudo="doas"
-
 # apt
-alias install="sudo apt install"
-alias remove="sudo apt remove"
+alias install="$SUPER $PACKAGE_MANAGER install"
+alias remove="$SUPER $PACKAGE_MANAGER remove"
 alias autoremove="sudo apt autoremove"
-alias search="sudo apt search"
-alias update="sudo apt update"
-alias upgrade="sudo apt upgrade"
-alias query="sudo apt list --installed"
-alias purge="sudo apt remove --purge"
-alias only-upgrade="sudo apt install --only-upgrade"
+alias search="$SUPER $PACKAGE_MANAGER search"
+alias update="$SUPER $PACKAGE_MANAGER update"
+alias upgrade="$SUPER $PACKAGE_MANAGER upgrade"
+alias query="$SUPER $PACKAGE_MANAGER list --installed"
+alias purge="$SUPER $PACKAGE_MANAGER remove --purge"
+alias only-upgrade="$SUPER $PACKAGE_MANAGER install --only-upgrade"
+alias info="sudo apt info"
 
 # git
 alias gc="git clone"
@@ -62,17 +55,6 @@ alias gu="git pull"
 alias gd="git diff"
 alias gk="git checkout"
 alias gl="git log --graph --decorate --oneline"
-
-# network
-alias ping="ping -c 4"
-
-# programming lang
-alias rb="ruby"
-
-# python
-alias py="python3"
-alias workon="source .venv/bin/activate"
-alias workoff="deactivate"
 
 # translate
 alias tl="trans -brief -target"

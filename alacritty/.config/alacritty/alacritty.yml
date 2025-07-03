@@ -15,6 +15,7 @@ window:
   decorations: none
   # window title
   title: Terminal
+  opacity: 1
 
 # scroll setting
 scrolling:
@@ -35,72 +36,46 @@ font:
   bold_italic:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
-  size: 9.5
+  size: 9
 
 # color scheme
 colors:
-  # Normal colors
+  # Primary colors
   primary:
-    background: '0x282a36'
-    foreground: '0xf8f8f2'
+    background: '0x100F0F'  # col_bg
+    foreground: '0xFFFCF0'  # col_fg
+
+  # Normal colors
+  normal:
+    black: '0x100F0F'       # col_black
+    red: '0xD14D41'         # col_red
+    green: '0x879A39'       # col_green
+    yellow: '0xD0A215'      # col_yellow
+    blue: '0x4385BE'        # col_blue
+    magenta: '0xCE5D97'     # col_magenta
+    cyan: '0x3AA99F'        # col_cyan
+    white: '0xFFFCF0'       # col_white
 
   # Bright colors
-  normal:
-    black: '0x21222C'
-    red: '0xFF5555'
-    green: '0x50FA7B'
-    yellow: '0xF1FA8C'
-    blue: '0xBD93F9'
-    magenta: '0xFF79C6'
-    cyan: '0x8BE9FD'
-    white: '0xBFBFBF'
-
-  # Dim colors
   bright:
-    black: '0x6272A4'
-    red: '0xFF6E6E'
-    green: '0x69FF94'
-    yellow: '0xFFFFA5'
-    blue: '0xD6ACFF'
-    magenta: '0xFF92DF'
-    cyan: '0xA4FFFF'
-    white: '0xFFFFFF'
-
-# Normal text color
-text:
-  normal: '0xF8F8F2'
-
-# Bright text color
-text:
-  bright: '0xF8F8F2'
+    black: '0x444444'       # col_border (sebagai bright black)
+    red: '0xE66E64'         # red lebih terang
+    green: '0x9FB052'       # green lebih terang
+    yellow: '0xE6B538'      # yellow lebih terang
+    blue: '0x66A2D1'        # blue lebih terang
+    magenta: '0xDE7FAA'     # magenta lebih terang
+    cyan: '0x5DBBAF'        # cyan lebih terang
+    white: '0xeeeeee'       # col_gray4
 
 # Selection colors
 selection:
-  text: '0xF8F8F2'
-  background: '0x44475A'
+  text: '0x100F0F'          # col_black untuk kontras yang baik
+  background: '0x4385BE'    # col_blue
 
-# ANSI escape sequence colors
-ansi:
-  # Normal colors
-  black: '0x21222C'
-  red: '0xFF5555'
-  green: '0x50FA7B'
-  yellow: '0xF1FA8C'
-  blue: '0xBD93F9'
-  magenta: '0xFF79C6'
-  cyan: '0x8BE9FD'
-  white: '0xBFBFBF'
-
-  # Bright colors
-  bright:
-    black: '0x6272A4'
-    red: '0xFF6E6E'
-    green: '0x69FF94'
-    yellow: '0xFFFFA5'
-    blue: '0xD6ACFF'
-    magenta: '0xFF92DF'
-    cyan: '0xA4FFFF'
-    white: '0xFFFFFF'
+# Cursor colors
+cursor:
+  text: '0x100F0F'          # col_bg
+  cursor: '0xFFFCF0'        # col_blue# color scheme
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -118,7 +93,7 @@ cursor:
 
 # define shell to use
 shell:
-  program: /bin/bash
+  program: /bin/zsh
 
 # key bindings
 key_bindings:
